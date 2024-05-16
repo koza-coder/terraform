@@ -15,4 +15,7 @@ provider "azurerm" {
     features {}
 }
 
-
+resource "azurerm_resource_group" "example" {
+  name     = "testowa_grupa_zasobow"
+  location = "East US"
+}
