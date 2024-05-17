@@ -21,6 +21,7 @@ resource "azurerm_resource_group" "example_rg" {
   }
 }
 
+#the below time delay added because of problem with resource creation
 resource "time_sleep" "wait_30_seconds" {
   create_duration = "30s"
 }
@@ -32,7 +33,7 @@ resource "azurerm_storage_account" "example_storage" {
   account_tier             = "Standard"
   account_replication_type = "LRS"
   account_kind             = "StorageV2"
-  depends_on = [time_sleep.wait_30_seconds]
+  depends_on = [time_sleep.wait_30_seconds]   #the time delay added because of problem with resource creation
 
   tags = {
     environment = "staging"
