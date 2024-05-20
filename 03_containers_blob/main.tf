@@ -40,5 +40,9 @@ resource "azurerm_storage_account" "example_storage" {
   }
 }
 
-
+resource "azurerm_storage_container" "example" {
+  name                  = "data-container"
+  storage_account_name  = "mystorageaccount12334455"
+  container_access_type = "blob"
+}
 
