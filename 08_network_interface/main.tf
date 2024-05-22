@@ -71,3 +71,9 @@ resource "azurerm_network_interface" "example-interface" {
     private_ip_address_allocation = "Dynamic"
   }
 }
+
+
+output "subnets" {
+  value = azurerm_virtual_network.example-vn.subnet
+  
+}
