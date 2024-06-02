@@ -65,9 +65,11 @@ resource "azurerm_network_interface" "example-interface" {
 output "subnets" {
   value      = azurerm_virtual_network.example-vn.subnet
   depends_on = [azurerm_subnet.subnet1, azurerm_subnet.subnet2]
-
 }
 
+output "subnet1and2" {
+  value = tolist([azurerm_subnet.subnet1, azurerm_subnet.subnet2])
+}
 
 resource "azurerm_public_ip" "example-public-ip" {
   name                = "pip1"
