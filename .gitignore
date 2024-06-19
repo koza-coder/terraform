@@ -1,6 +1,15 @@
 # Local .terraform directories
 **/.terraform/*
 
+#security
+*.pem
+*.key
+*.pub
+*.p12
+*.pfx
+*.cer
+*.crt
+
 # .tfstate files
 *.tfstate
 *.tfstate.*
