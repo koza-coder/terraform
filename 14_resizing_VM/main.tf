@@ -1,4 +1,6 @@
 
+#if you want to print a graph, then run: 
+# terraform graph -type=plan | dot -Tpng >graph.png 
 locals {
   location = "West Europe"
   rg_name  = "testowa_rg"
