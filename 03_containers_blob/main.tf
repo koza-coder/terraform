@@ -21,19 +21,14 @@ resource "azurerm_resource_group" "example_rg" {
   }
 }
 
-#the below time delay added because of problem with resource creation
-resource "time_sleep" "wait_30_seconds" {
-  create_duration = "30s"
-}
 
 resource "azurerm_storage_account" "example_storage" {
   name                     = "mystorageaccount12334455"
-  resource_group_name      = "testowa_rg"
+  resource_group_name      = azurerm_resource_group.example_rg.name
   location                 = "East US"
   account_tier             = "Standard"
   account_replication_type = "LRS"
   account_kind             = "StorageV2"
-  depends_on = [time_sleep.wait_30_seconds]   #the time delay added because of problem with resource creation
 
   tags = {
     environment = "staging"
@@ -42,7 +37,7 @@ resource "azurerm_storage_account" "example_storage" {
 
 resource "azurerm_storage_container" "example" {
   name                  = "data-container"
-  storage_account_name  = "mystorageaccount12334455"
+  storage_account_name  = azurerm_storage_account.example_storage.name
   container_access_type = "blob"
 }
 
